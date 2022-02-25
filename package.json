@@ -1,0 +1,23 @@
+{
+  "name": "single-page-app-using-expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baziz22/Single-Page-App-Using-Expressjs.git"
+  },
+  "keywords": [],
+  "author": "Bader Binsunbil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baziz22/Single-Page-App-Using-Expressjs/issues"
+  },
+  "homepage": "https://github.com/baziz22/Single-Page-App-Using-Expressjs#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
