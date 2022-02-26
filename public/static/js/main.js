@@ -1,8 +1,17 @@
+import Dashboard from "./views/Dashboard.js";
+import Blogs from "./views/Blogs.js";
+import Settings from "./views/Settings.js";
+
+const navigateTo = (url) => {
+  history.pushState(null, null, url);
+  router();
+};
+
 const router = async () => {
   const routes = [
-    { path: "/", view: "Viewing Dashboard" },
-    { path: "/posts", view: "Viewing Post" },
-    { path: "/settings", view: "Viewing settings" },
+    { path: "/", view: Dashboard },
+    { path: "/blogs", view: Blogs },
+    { path: "/settings", view: Settings },
   ];
 
   //Test each rout for potential match
@@ -20,9 +29,23 @@ const router = async () => {
       isMatch: true,
     };
   }
-  console.log(match.route.path);
+
+  // create a new instant of the view at the match route
+  const view = new match.route.view();
+  document.querySelector("#app").innerHTML = await view.getHTML();
+
+  //console.log(match.route.view());
 };
 
+// To make the router doing his job in order of using previous and forward page button.
+window.addEventListener("popstate", router);
+
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.addEventListener("click", (e) => {
+    if (e.target.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    }
+  });
   router();
 });
